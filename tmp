@@ -1,0 +1,14 @@
+Webpush.payload_send(
+  message: 'AAA',
+  endpoint: 'https://fcm.googleapis.com/fcm/send/eA0h-xx4iF0:APA91bEFKSKVmSR5hSMfhTAiCbY3kZ30mukJnS_JCsHQ6dd6tvYJEZ_X1i_u4tAc_LnSIA0UtUrCBm4msk0x2MCt_Oqp-JRhSQWl3ivhphyMSC7BOcqXhzXtxoD2pwJNMsRm_oknBb2j',
+  p256dh: 'BBI9Prye2jNOWifDaLxgAMMxHg_MUywSo_tLxVTPxnyuA7SZiUX0kwjOYPElZcIriAFvc4Vr7zASgIfp31pO1aA',
+  auth: 'YO8TSdd6fOjCl1PH9EGjGw',
+  vapid: {
+    subject: 'mailto:info@tigodonline.com',
+    public_key: Settings.webpush.public_key,
+    private_key: Settings.webpush.private_key
+  },
+  ssl_timeout: 5,
+  open_timeout: 5,
+  read_timeout: 5
+)
