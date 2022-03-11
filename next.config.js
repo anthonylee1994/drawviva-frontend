@@ -11,7 +11,7 @@ const nextConfig = {
     dest: "public",
   },
   env: {
-    API_BASE_URL: "http://127.0.0.1:3003",
+    API_BASE_URL: "https://api.drawviva.com",
     WEBPUSH_PUBLIC_KEY:
       "BJIqpF5XQm25HZ4BCx7isd7IpbBX_MdD4vEuw8q9rNrPrhEJswz9s9Mf7BuC89Pn1c1NXMbjm2qvQXYeQNU710k",
   },
