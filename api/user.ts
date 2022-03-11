@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import { User } from "types/User";
 import { apiClient } from "utils/apiClient";
 
 interface UpdateUserParams {
@@ -10,6 +11,19 @@ interface UpdateUserParams {
   };
 }
 
+const searchUsers = async (q: string): Promise<User[]> => {
+  const response = await apiClient.get<{ q: string }, AxiosResponse<User[]>>(
+    "/users",
+    {
+      params: {
+        q,
+      },
+    }
+  );
+
+  return response.data;
+};
+
 const updateUser = async (params: UpdateUserParams): Promise<void> => {
   await apiClient.put<UpdateUserParams, AxiosResponse<undefined>>(
     "/me",
@@ -19,4 +33,5 @@ const updateUser = async (params: UpdateUserParams): Promise<void> => {
 
 export const userAPI = Object.freeze({
   updateUser,
+  searchUsers,
 });

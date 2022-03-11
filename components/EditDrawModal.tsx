@@ -1,11 +1,12 @@
 import React, { FormEventHandler } from "react";
-import { Box, Button, Drawer, TextField, Typography } from "@mui/material";
+import { Box, Button, Drawer, TextField } from "@mui/material";
 import { FormattedMessage, useIntl } from "react-intl";
-import { amber } from "@mui/material/colors";
 import { useDrawsStore } from "hooks/useDrawsStore";
 import { AvatarUploader } from "components/AvatarUploader";
 import CasinoIcon from "@mui/icons-material/Casino";
 import { Draw } from "types/Draw";
+import { FormTitle } from "./FormTitle";
+import { FormSubmitButton } from "./FormSubmitButton";
 
 interface Props {
   draw?: Draw;
@@ -49,15 +50,11 @@ export const EditDrawModal = React.memo<Props>(({ visible, onClose, draw }) => {
     <Drawer anchor="bottom" open={visible} onClose={onClose}>
       <form onSubmit={onSubmit}>
         <Box p={2} display="flex" flexDirection="column" alignItems="center">
-          <Typography
-            sx={{ mb: 2, textAlign: "center", color: amber[900] }}
-            variant="h6"
-            fontWeight="bold"
-          >
+          <FormTitle>
             <FormattedMessage
               id={`draw.${isEditMode ? "edit" : "create"}.title`}
             />
-          </Typography>
+          </FormTitle>
 
           <AvatarUploader
             setImageUrl={setImageUrl}
@@ -76,18 +73,9 @@ export const EditDrawModal = React.memo<Props>(({ visible, onClose, draw }) => {
             onChange={(e) => setName(e.target.value)}
           />
 
-          <Button
-            fullWidth
-            type="submit"
-            size="large"
-            disableElevation
-            variant="contained"
-            sx={{ mt: 2, color: "white", borderRadius: 5 }}
-            color="secondary"
-            disabled={isEditing || !name}
-          >
+          <FormSubmitButton disabled={isEditing || !name}>
             <FormattedMessage id={`action.${isEditMode ? "edit" : "create"}`} />
-          </Button>
+          </FormSubmitButton>
         </Box>
       </form>
     </Drawer>

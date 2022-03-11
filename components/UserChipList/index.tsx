@@ -52,14 +52,10 @@ export const UserChipList = React.memo(() => {
                 }
               : undefined
           }
-          onEdit={
-            isAdmin
-              ? () => {
-                  setFocusItem(userDraw);
-                  setEditModalVisible(true);
-                }
-              : undefined
-          }
+          onEdit={() => {
+            setFocusItem(userDraw);
+            setEditModalVisible(true);
+          }}
         />
       ))}
 

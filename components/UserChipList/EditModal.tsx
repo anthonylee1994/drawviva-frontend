@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Drawer,
   FormControl,
   InputLabel,
@@ -8,7 +7,8 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import { amber } from "@mui/material/colors";
+import { FormSubmitButton } from "components/FormSubmitButton";
+import { FormTitle } from "components/FormTitle";
 import { useDrawsStore } from "hooks/useDrawsStore";
 import { useChangeRoleForbiddenCheck } from "hooks/userDraws/useChangeRoleForbiddenCheck";
 import { useUserDrawsStore } from "hooks/useUserDrawsStore";
@@ -25,12 +25,19 @@ interface Props {
 }
 
 export const EditModal = React.memo<Props>(({ userDraw, visible, onClose }) => {
+  const {
+    query: { id },
+  } = useRouter();
+
   const [userRole, setUserRole] = React.useState<UserRole>(
     userDraw?.role ?? "participant"
   );
 
   const isEditing = useUserDrawsStore((state) => state.isEditing);
   const isChangeRoleForbidden = useChangeRoleForbiddenCheck(userDraw);
+  const draw = useDrawsStore((state) => state.findDrawById(Number(id)));
+  const isAdmin = draw?.user_draw.role === "admin";
+  const isFormDisabled = isEditing || isChangeRoleForbidden || !isAdmin;
 
   const editUserDraw = useUserDrawsStore((state) => state.editUserDraw);
 
@@ -54,20 +61,16 @@ export const EditModal = React.memo<Props>(({ userDraw, visible, onClose }) => {
     <Drawer anchor="bottom" open={visible} onClose={onClose}>
       <form onSubmit={onSubmit}>
         <Box p={2} display="flex" flexDirection="column" alignItems="center">
-          <Typography
-            sx={{ mb: 2, textAlign: "center", color: amber[900] }}
-            variant="h6"
-            fontWeight="bold"
-          >
+          <FormTitle>
             <FormattedMessage id="draw.users.role.edit" />
-          </Typography>
+          </FormTitle>
 
           <FormControl fullWidth>
             <InputLabel>
               <FormattedMessage id="draw.users.role" />
             </InputLabel>
             <Select
-              disabled={isEditing || isChangeRoleForbidden}
+              disabled={isFormDisabled}
               value={userRole}
               label="draw.users.role"
               onChange={({ target: { value } }) =>
@@ -89,18 +92,15 @@ export const EditModal = React.memo<Props>(({ userDraw, visible, onClose }) => {
             </Typography>
           )}
 
-          <Button
-            fullWidth
-            type="submit"
-            size="large"
-            disableElevation
-            variant="contained"
-            sx={{ mt: 2, color: "white", borderRadius: 5 }}
-            color="secondary"
-            disabled={isEditing || isChangeRoleForbidden}
-          >
+          {!isAdmin && (
+            <Typography mt={1} variant="body2" color="error">
+              <FormattedMessage id="draw.users.not.admin.warning" />
+            </Typography>
+          )}
+
+          <FormSubmitButton disabled={isFormDisabled}>
             <FormattedMessage id="action.edit" />
-          </Button>
+          </FormSubmitButton>
         </Box>
       </form>
     </Drawer>
