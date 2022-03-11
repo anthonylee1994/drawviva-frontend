@@ -20,6 +20,14 @@ const createDrawItem = async (
   return response.data;
 };
 
+const luckyPick = async (drawId: number): Promise<DrawItem> => {
+  const response = await apiClient.post<undefined, AxiosResponse<DrawItem>>(
+    `/draws/${drawId}/draw`
+  );
+
+  return response.data;
+};
+
 const updateDrawItem = async (params: DrawItemParams): Promise<void> => {
   await apiClient.put<DrawItemParams, AxiosResponse<void>>(
     `/draw_items/${params.id}`,
@@ -37,4 +45,5 @@ export const drawItemAPI = Object.freeze({
   createDrawItem,
   updateDrawItem,
   deleteDrawItem,
+  luckyPick,
 });

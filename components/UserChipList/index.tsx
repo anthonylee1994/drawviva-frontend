@@ -10,7 +10,7 @@ import { useUserDrawsStore } from "hooks/useUserDrawsStore";
 import { EditModal } from "./EditModal";
 import { UserDraw } from "types/UserDraw";
 import { useUserDraws } from "hooks/userDraws/useUserDraws";
-import { useDrawsStore } from "hooks/useDrawsStore";
+import { useAdminCheck } from "hooks/useAdminCheck";
 
 export const UserChipList = React.memo(() => {
   const {
@@ -20,8 +20,7 @@ export const UserChipList = React.memo(() => {
     undefined
   );
 
-  const draw = useDrawsStore((state) => state.findDrawById(Number(id)));
-  const isAdmin = draw?.user_draw.role === "admin";
+  const isAdmin = useAdminCheck();
   const userDraws = useUserDraws(Number(id));
 
   const [isDeleteConfirmModalVisible, setDeleteConfirmModalVisible] =

@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { FormSubmitButton } from "components/FormSubmitButton";
 import { FormTitle } from "components/FormTitle";
+import { useAdminCheck } from "hooks/useAdminCheck";
 import { useDrawsStore } from "hooks/useDrawsStore";
 import { useChangeRoleForbiddenCheck } from "hooks/userDraws/useChangeRoleForbiddenCheck";
 import { useUserDrawsStore } from "hooks/useUserDrawsStore";
@@ -35,8 +36,7 @@ export const EditModal = React.memo<Props>(({ userDraw, visible, onClose }) => {
 
   const isEditing = useUserDrawsStore((state) => state.isEditing);
   const isChangeRoleForbidden = useChangeRoleForbiddenCheck(userDraw);
-  const draw = useDrawsStore((state) => state.findDrawById(Number(id)));
-  const isAdmin = draw?.user_draw.role === "admin";
+  const isAdmin = useAdminCheck();
   const isFormDisabled = isEditing || isChangeRoleForbidden || !isAdmin;
 
   const editUserDraw = useUserDrawsStore((state) => state.editUserDraw);

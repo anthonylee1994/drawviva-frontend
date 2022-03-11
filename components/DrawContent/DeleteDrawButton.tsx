@@ -10,6 +10,7 @@ import { FormattedMessage } from "react-intl";
 import { Delete as DeleteIcon } from "@mui/icons-material";
 import { useDrawsStore } from "hooks/useDrawsStore";
 import { useRouter } from "next/router";
+import { useAdminCheck } from "hooks/useAdminCheck";
 
 export const DeleteDrawButton = React.memo(() => {
   const {
@@ -18,9 +19,6 @@ export const DeleteDrawButton = React.memo(() => {
   } = useRouter();
   const [confirmDialogVisible, setConfirmDialogVisible] = React.useState(false);
 
-  const draw = useDrawsStore((state) =>
-    state.draws.find((draw) => draw.id === Number(id))
-  );
   const deleteDraw = useDrawsStore((state) => state.deleteDraw);
   const isDeleting = useDrawsStore((state) => state.isDeleting);
 
@@ -38,7 +36,9 @@ export const DeleteDrawButton = React.memo(() => {
     push("/");
   }, [deleteDraw, id, push]);
 
-  if (draw?.user_draw.role !== "admin") {
+  const isAdmin = useAdminCheck();
+
+  if (!isAdmin) {
     return null;
   }
 

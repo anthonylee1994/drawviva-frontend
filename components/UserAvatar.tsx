@@ -55,7 +55,7 @@ export const UserAvatar = React.memo(() => {
         <Button
           disableElevation
           variant="contained"
-          size="medium"
+          size="large"
           sx={{ mx: 2, mb: 2, color: "white", borderRadius: 5 }}
           color="secondary"
           onClick={onLogout}

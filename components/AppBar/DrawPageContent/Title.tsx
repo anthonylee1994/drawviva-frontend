@@ -5,13 +5,14 @@ import { useRouter } from "next/router";
 import { useDrawsStore } from "hooks/useDrawsStore";
 import { orange } from "@mui/material/colors";
 import { EditDrawModal } from "../../EditDrawModal";
+import { useAdminCheck } from "hooks/useAdminCheck";
 
 export const Title = React.memo(() => {
   const {
     query: { id },
   } = useRouter();
   const draw = useDrawsStore((state) => state.findDrawById(Number(id)));
-  const isAdmin = draw?.user_draw.role === "admin";
+  const isAdmin = useAdminCheck();
 
   const [isEditModalVisible, setEditModalVisible] = React.useState(false);
 

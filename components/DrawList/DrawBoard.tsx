@@ -25,7 +25,7 @@ export const DrawBoard = React.memo<Props>(({ draw }) => {
         m: 1.5,
         p: 2,
         bgcolor: "white",
-        borderRadius: 2,
+        borderRadius: 5,
         display: "flex",
         alignItems: "center",
         overflow: "hidden",

@@ -14,7 +14,9 @@ import {
   Paper,
 } from "@mui/material";
 import { EditDrawItemModal } from "components/EditDrawItemModal";
+import { EmptyDrawItems } from "components/EmptyDrawItems";
 import { useDrawItems } from "hooks/drawItems/useDrawItems";
+import { useAdminCheck } from "hooks/useAdminCheck";
 import { useDrawItemsStore } from "hooks/useDrawItemsStore";
 import { useDrawsStore } from "hooks/useDrawsStore";
 import { useRouter } from "next/router";
@@ -26,8 +28,7 @@ export const DrawItemList = React.memo(() => {
   const {
     query: { id },
   } = useRouter();
-  const draw = useDrawsStore((state) => state.findDrawById(Number(id)));
-  const isAdmin = draw?.user_draw.role === "admin";
+  const isAdmin = useAdminCheck();
 
   const drawItems = useDrawItems(Number(id));
   const isEditing = useDrawItemsStore((state) => state.isEditing);
@@ -41,7 +42,7 @@ export const DrawItemList = React.memo(() => {
     React.useState(false);
 
   if (drawItems.length === 0) {
-    return null;
+    return <EmptyDrawItems />;
   }
 
   return (

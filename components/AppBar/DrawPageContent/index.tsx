@@ -3,17 +3,12 @@ import { AddButton } from "../AddButton";
 import { BackButton } from "../BackButton";
 import { useRouter } from "next/router";
 import { Title } from "./Title";
-import { useDrawsStore } from "hooks/useDrawsStore";
 import { EditDrawItemModal } from "components/EditDrawItemModal";
+import { useAdminCheck } from "hooks/useAdminCheck";
 
 export const DrawPageContent = React.memo(() => {
   const router = useRouter();
-
-  const {
-    query: { id },
-  } = router;
-  const draw = useDrawsStore((state) => state.findDrawById(Number(id)));
-  const isAdmin = draw?.user_draw.role === "admin";
+  const isAdmin = useAdminCheck();
 
   const [editModalVisible, setEditModalVisible] = React.useState(false);
   const openEditModal = React.useCallback(() => setEditModalVisible(true), []);

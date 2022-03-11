@@ -26,12 +26,19 @@ const lang = {
   "drawItem.edit.title": "更改秒抽項目",
   "drawItem.name": "項目名稱",
   "drawItem.delete.confirm.message": "您是否確認刪除此秒抽項目?",
+  "lucky.pick": "立即秒抽",
+  "lucky.picking": "秒抽中...",
+  "lucky.picked.result": "秒抽結果",
+
+  "no.draw": "目前沒有秒抽",
+  "no.draw.items": "目前沒有秒抽項目",
 
   searching: "尋找中...",
   "no.options": "找不到選項",
   "action.create": "新增",
   "action.edit": "更改",
   "action.cancel": "取消",
+  "action.close": "關閉",
   "action.delete": "立即刪除",
   "action.delete.confirm.title": "刪除確認",
 };

@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { EmptyDraws } from "components/EmptyDraws";
 import { useDrawsStore } from "hooks/useDrawsStore";
 import React from "react";
 import { DrawBoard } from "./DrawBoard";
@@ -10,6 +11,10 @@ export const DrawList = React.memo(() => {
   React.useEffect(() => {
     fetchDraws();
   }, [fetchDraws]);
+
+  if (draws.length === 0) {
+    return <EmptyDraws />;
+  }
 
   return (
     <Box>
