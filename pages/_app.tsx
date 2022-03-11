@@ -8,15 +8,20 @@ import { IntlProvider } from "react-intl";
 import zhHK from "locales/zh-HK";
 import Head from "next/head";
 import { useAuthStore } from "hooks/useAuthStore";
+import { useRouter } from "next/router";
 
 const App = React.memo<AppProps>(({ Component, pageProps }) => {
+  const router = useRouter();
   const verifyAuth = useAuthStore((state) => state.verifyAuth);
 
   useInitializePushNotification();
 
   React.useEffect(() => {
+    if (!localStorage.getItem("token") && router.pathname !== "/") {
+      router.push("/");
+    }
     verifyAuth();
-  }, [verifyAuth]);
+  }, [router, verifyAuth]);
 
   return (
     <React.Fragment>

@@ -22,6 +22,11 @@ const lang = {
   "draw.users.only.admin.warning": "您是唯一的秒抽管理者，因此無法更改。",
   "draw.users.not.admin.warning": "您不是秒抽管理者，因此無法更改。",
 
+  "drawItem.create.title": "新增秒抽項目",
+  "drawItem.edit.title": "更改秒抽項目",
+  "drawItem.name": "項目名稱",
+  "drawItem.delete.confirm.message": "您是否確認刪除此秒抽項目?",
+
   searching: "尋找中...",
   "no.options": "找不到選項",
   "action.create": "新增",

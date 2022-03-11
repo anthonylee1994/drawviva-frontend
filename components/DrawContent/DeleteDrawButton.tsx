@@ -45,13 +45,14 @@ export const DeleteDrawButton = React.memo(() => {
   return (
     <React.Fragment>
       <Button
+        size="large"
         color="error"
         startIcon={<DeleteIcon />}
         disableElevation
         fullWidth
         variant="contained"
         onClick={onConfirmDialogOpen}
-        sx={{ borderRadius: 5 }}
+        sx={{ borderRadius: 5, mb: 2 }}
       >
         <FormattedMessage id="draw.delete" />
       </Button>
