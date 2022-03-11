@@ -5,7 +5,6 @@ const Document = () => {
   return (
     <Html>
       <Head>
-        <link rel="apple-touch-icon" href="/icons/touch-icon-iphone.png" />
         {[192, 256, 384, 512].map((size) => (
           <link
             key={size}
@@ -15,8 +14,20 @@ const Document = () => {
           />
         ))}
 
+        <link rel="icon" type="image/png" href={`/icon-192x192.png`} />
+
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#ffb300" />
         <NextScript />
       </Head>
       <Main />
