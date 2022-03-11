@@ -11,6 +11,8 @@ export const Title = React.memo(() => {
     query: { id },
   } = useRouter();
   const draw = useDrawsStore((state) => state.findDrawById(Number(id)));
+  const isAdmin = draw?.user_draw.role === "admin";
+
   const [isEditModalVisible, setEditModalVisible] = React.useState(false);
 
   return (
@@ -23,6 +25,7 @@ export const Title = React.memo(() => {
             alignItems: "center",
             borderRadius: 1,
           }}
+          disabled={!isAdmin}
           onClick={() => setEditModalVisible(true)}
         >
           <Avatar sx={{ ml: 0.5, bgcolor: orange[500] }} src={draw?.image_url}>

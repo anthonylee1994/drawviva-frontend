@@ -68,7 +68,7 @@ export const UserChipList = React.memo(() => {
       <DeleteConfirmModal
         visible={isDeleteConfirmModalVisible}
         onConfirm={() => {
-          focusItem && deleteUserDraw(Number(id), focusItem.id);
+          focusItem && deleteUserDraw(focusItem.id);
           setDeleteConfirmModalVisible(false);
         }}
         onClose={() => setDeleteConfirmModalVisible(false)}
