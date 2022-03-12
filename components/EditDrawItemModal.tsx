@@ -1,5 +1,5 @@
 import React, { FormEventHandler } from "react";
-import { Box, Drawer, TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useDrawsStore } from "hooks/useDrawsStore";
 import { AvatarUploader } from "components/AvatarUploader";

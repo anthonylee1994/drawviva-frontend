@@ -19,6 +19,7 @@ export const BottomDrawer = React.memo<Props>(({ open, onClose, children }) => {
           margin: "0 auto",
           borderTopLeftRadius: theme.spacing(2),
           borderTopRightRadius: theme.spacing(2),
+          pb: "env(safe-area-inset-bottom)",
         }),
       }}
     >
