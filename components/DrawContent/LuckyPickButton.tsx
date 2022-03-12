@@ -77,7 +77,7 @@ export const LuckyPickButton = React.memo(() => {
         TransitionComponent={Zoom}
         onClose={closeModal}
         open={modalVisible}
-        maxWidth="sm"
+        maxWidth="xs"
         PaperProps={{
           sx: { borderRadius: 5 },
         }}

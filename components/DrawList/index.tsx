@@ -17,7 +17,15 @@ export const DrawList = React.memo(() => {
   }
 
   return (
-    <Box>
+    <Box
+      sx={(theme) => ({
+        maxWidth: 600,
+        margin: `${theme.spacing(2)} auto`,
+        [theme.breakpoints.down("sm")]: {
+          margin: `${theme.spacing(0)} auto`,
+        },
+      })}
+    >
       {draws.map((draw, key) => (
         <DrawBoard key={key} draw={draw} />
       ))}

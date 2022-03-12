@@ -7,6 +7,7 @@ import {
   Select,
   Typography,
 } from "@mui/material";
+import { BottomDrawer } from "components/BottomDrawer";
 import { FormSubmitButton } from "components/FormSubmitButton";
 import { FormTitle } from "components/FormTitle";
 import { useAdminCheck } from "hooks/useAdminCheck";
@@ -58,7 +59,7 @@ export const EditModal = React.memo<Props>(({ userDraw, visible, onClose }) => {
   }, [userDraw]);
 
   return (
-    <Drawer anchor="bottom" open={visible} onClose={onClose}>
+    <BottomDrawer open={visible} onClose={onClose}>
       <form onSubmit={onSubmit}>
         <Box p={2} display="flex" flexDirection="column" alignItems="center">
           <FormTitle>
@@ -103,6 +104,6 @@ export const EditModal = React.memo<Props>(({ userDraw, visible, onClose }) => {
           </FormSubmitButton>
         </Box>
       </form>
-    </Drawer>
+    </BottomDrawer>
   );
 });

@@ -1,6 +1,5 @@
 self.addEventListener("push", function (event) {
   const data = JSON.parse(event?.data.text());
-  console.log("data", data);
   event?.waitUntil(
     self.registration.showNotification(data?.title, {
       body: data?.message,

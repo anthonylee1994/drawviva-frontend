@@ -7,6 +7,7 @@ import CasinoIcon from "@mui/icons-material/Casino";
 import { Draw } from "types/Draw";
 import { FormTitle } from "./FormTitle";
 import { FormSubmitButton } from "./FormSubmitButton";
+import { BottomDrawer } from "./BottomDrawer";
 
 interface Props {
   draw?: Draw;
@@ -47,7 +48,7 @@ export const EditDrawModal = React.memo<Props>(({ visible, onClose, draw }) => {
   }, [draw]);
 
   return (
-    <Drawer anchor="bottom" open={visible} onClose={onClose}>
+    <BottomDrawer open={visible} onClose={onClose}>
       <form onSubmit={onSubmit}>
         <Box p={2} display="flex" flexDirection="column" alignItems="center">
           <FormTitle>
@@ -78,6 +79,6 @@ export const EditDrawModal = React.memo<Props>(({ visible, onClose, draw }) => {
           </FormSubmitButton>
         </Box>
       </form>
-    </Drawer>
+    </BottomDrawer>
   );
 });

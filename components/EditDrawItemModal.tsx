@@ -9,6 +9,7 @@ import { FormSubmitButton } from "./FormSubmitButton";
 import { DrawItem } from "types/DrawItem";
 import { useDrawItemsStore } from "hooks/useDrawItemsStore";
 import { useRouter } from "next/router";
+import { BottomDrawer } from "./BottomDrawer";
 
 interface Props {
   drawItem?: DrawItem;
@@ -54,8 +55,15 @@ export const EditDrawItemModal = React.memo<Props>(
       }
     }, [drawItem]);
 
+    React.useEffect(() => {
+      if (!visible) {
+        setName("");
+        setImageUrl("");
+      }
+    }, [visible]);
+
     return (
-      <Drawer anchor="bottom" open={visible} onClose={onClose}>
+      <BottomDrawer open={visible} onClose={onClose}>
         <form onSubmit={onSubmit}>
           <Box p={2} display="flex" flexDirection="column" alignItems="center">
             <FormTitle>
@@ -88,7 +96,7 @@ export const EditDrawItemModal = React.memo<Props>(
             </FormSubmitButton>
           </Box>
         </form>
-      </Drawer>
+      </BottomDrawer>
     );
   }
 );

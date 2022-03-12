@@ -7,11 +7,13 @@ import {
   ListItemText,
   Drawer,
   Zoom,
+  Box,
 } from "@mui/material";
 import { orange } from "@mui/material/colors";
 import { useAuthStore } from "hooks/useAuthStore";
 import React from "react";
 import { FormattedMessage } from "react-intl";
+import { BottomDrawer } from "./BottomDrawer";
 
 export const UserAvatar = React.memo(() => {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -35,12 +37,22 @@ export const UserAvatar = React.memo(() => {
       <Zoom in>
         <Avatar
           src={currentUser.photo_url}
-          sx={{ bgcolor: orange[700] }}
+          sx={(theme) => ({
+            bgcolor: orange[700],
+            cursor: "pointer",
+            width: theme.spacing(6),
+            height: theme.spacing(6),
+            transition: "0.2s ease-in-out",
+            [theme.breakpoints.down("sm")]: {
+              width: theme.spacing(5),
+              height: theme.spacing(5),
+            },
+          })}
           onClick={onDrawerOpen}
         />
       </Zoom>
 
-      <Drawer anchor="bottom" open={drawerOpen} onClose={onDrawerClose}>
+      <BottomDrawer open={drawerOpen} onClose={onDrawerClose}>
         <List sx={{ mx: 1 }}>
           <ListItem>
             <ListItemAvatar>
@@ -62,7 +74,7 @@ export const UserAvatar = React.memo(() => {
         >
           <FormattedMessage id="app.logout" />
         </Button>
-      </Drawer>
+      </BottomDrawer>
     </React.Fragment>
   );
 });

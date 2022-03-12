@@ -36,12 +36,31 @@ export const DrawBoard = React.memo<Props>(({ draw }) => {
       }}
       onClick={onClick}
     >
-      <Avatar src={draw.image_url}>
+      <Avatar
+        src={draw.image_url}
+        sx={(theme) => ({
+          width: theme.spacing(8),
+          height: theme.spacing(8),
+          transition: "0.2s ease-in-out",
+          [theme.breakpoints.down("sm")]: {
+            width: theme.spacing(6),
+            height: theme.spacing(6),
+          },
+        })}
+      >
         <CasinoIcon />
       </Avatar>
       <Typography
-        sx={{ ml: 2, whiteSpace: "break-spaces", flexGrow: 1 }}
         variant="body1"
+        sx={(theme) => ({
+          ml: 2,
+          whiteSpace: "break-spaces",
+          flexGrow: 1,
+          fontSize: 18,
+          [theme.breakpoints.down("sm")]: {
+            fontSize: 16,
+          },
+        })}
       >
         {draw.name}
       </Typography>
@@ -49,11 +68,19 @@ export const DrawBoard = React.memo<Props>(({ draw }) => {
         size="small"
         label={formatMessage({ id: `draw.role.${draw.user_draw.role}` })}
         sx={(theme) => ({
+          fontSize: 16,
+          px: 1,
+          py: 2,
           color: draw.user_draw.role === "admin" ? "white" : undefined,
           bgcolor:
             draw.user_draw.role === "admin"
               ? theme.palette.secondary.main
               : undefined,
+          [theme.breakpoints.down("sm")]: {
+            fontSize: 14,
+            px: 0.5,
+            py: 1,
+          },
         })}
       />
     </Paper>

@@ -35,8 +35,29 @@ export const UserChipList = React.memo(() => {
   }
 
   return (
-    <Box p={2} pb={0}>
-      <Typography fontWeight="bold" gutterBottom>
+    <Box
+      sx={(theme) => ({
+        p: 2,
+        pt: 3,
+        pb: 0,
+        maxWidth: 600,
+        m: "0 auto",
+        [theme.breakpoints.down("sm")]: {
+          pt: 2,
+        },
+      })}
+    >
+      <Typography
+        sx={(theme) => ({
+          fontSize: 20,
+          pb: 1,
+          [theme.breakpoints.down("sm")]: {
+            fontSize: 18,
+          },
+        })}
+        fontWeight="bold"
+        gutterBottom
+      >
         <FormattedMessage id="draw.users" />
       </Typography>
       {userDraws.map((userDraw, key) => (

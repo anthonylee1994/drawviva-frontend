@@ -52,7 +52,14 @@ export const DeleteDrawButton = React.memo(() => {
         fullWidth
         variant="contained"
         onClick={onConfirmDialogOpen}
-        sx={{ borderRadius: 5, mb: 2 }}
+        sx={(theme) => ({
+          borderRadius: 5,
+          mb: 2,
+          fontSize: 18,
+          [theme.breakpoints.down("sm")]: {
+            fontSize: 16,
+          },
+        })}
       >
         <FormattedMessage id="draw.delete" />
       </Button>

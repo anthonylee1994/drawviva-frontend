@@ -29,7 +29,19 @@ export const Title = React.memo(() => {
           disabled={!isAdmin}
           onClick={() => setEditModalVisible(true)}
         >
-          <Avatar sx={{ ml: 0.5, bgcolor: orange[500] }} src={draw?.image_url}>
+          <Avatar
+            sx={(theme) => ({
+              ml: 0.5,
+              bgcolor: orange[500],
+              width: theme.spacing(6),
+              height: theme.spacing(6),
+              [theme.breakpoints.down("sm")]: {
+                width: theme.spacing(5),
+                height: theme.spacing(5),
+              },
+            })}
+            src={draw?.image_url}
+          >
             <CasinoIcon />
           </Avatar>
           <Typography
@@ -39,6 +51,12 @@ export const Title = React.memo(() => {
             variant="body1"
             mx={1.5}
             overflow="hidden"
+            sx={(theme) => ({
+              fontSize: 20,
+              [theme.breakpoints.down("sm")]: {
+                fontSize: 16,
+              },
+            })}
           >
             {draw?.name}
           </Typography>

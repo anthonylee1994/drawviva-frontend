@@ -18,6 +18,7 @@ import { useUserDraws } from "hooks/userDraws/useUserDraws";
 import { useRouter } from "next/router";
 import { FormSubmitButton } from "components/FormSubmitButton";
 import { useUserDrawsStore } from "hooks/useUserDrawsStore";
+import { BottomDrawer } from "components/BottomDrawer";
 
 interface Props {
   visible: boolean;
@@ -67,7 +68,7 @@ export const AddUserModal = React.memo<Props>(({ visible, onClose }) => {
   }, [visible]);
 
   return (
-    <Drawer anchor="bottom" open={visible} onClose={onClose}>
+    <BottomDrawer open={visible} onClose={onClose}>
       <form onSubmit={onSubmit}>
         <Box p={2} display="flex" flexDirection="column" alignItems="center">
           <FormTitle>
@@ -130,6 +131,6 @@ export const AddUserModal = React.memo<Props>(({ visible, onClose }) => {
           </FormSubmitButton>
         </Box>
       </form>
-    </Drawer>
+    </BottomDrawer>
   );
 });

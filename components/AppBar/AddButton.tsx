@@ -11,9 +11,27 @@ export const AddButton = React.memo<Props>(({ onClick }) => {
   return (
     <IconButton
       onClick={onClick}
-      sx={{ ml: 1, mr: 0, bgcolor: `white !important`, color: orange[700] }}
+      sx={(theme) => ({
+        ml: 1,
+        mr: 0,
+        width: theme.spacing(6),
+        height: theme.spacing(6),
+        bgcolor: `white !important`,
+        color: orange[700],
+        [theme.breakpoints.down("sm")]: {
+          width: theme.spacing(5),
+          height: theme.spacing(5),
+        },
+      })}
     >
-      <AddIcon />
+      <AddIcon
+        sx={(theme) => ({
+          fontSize: 28,
+          [theme.breakpoints.down("sm")]: {
+            fontSize: 24,
+          },
+        })}
+      />
     </IconButton>
   );
 });

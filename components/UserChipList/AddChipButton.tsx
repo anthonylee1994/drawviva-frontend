@@ -11,10 +11,19 @@ export const AddChipButton = React.memo(() => {
   return (
     <React.Fragment>
       <Chip
-        sx={{ m: 0.5 }}
         clickable
-        onClick={() => setModalVisible(true)}
+        sx={(theme) => ({
+          m: 0.5,
+          fontSize: 16,
+          height: 40,
+          borderRadius: 5,
+          [theme.breakpoints.down("sm")]: {
+            height: 32,
+            fontSize: 14,
+          },
+        })}
         avatar={<AddIcon />}
+        onClick={() => setModalVisible(true)}
         label={formatMessage({ id: "draw.users.add" })}
       />
 

@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Category as ItemIcon,
   Delete as DeleteIcon,
@@ -18,9 +19,7 @@ import { EmptyDrawItems } from "components/EmptyDrawItems";
 import { useDrawItems } from "hooks/drawItems/useDrawItems";
 import { useAdminCheck } from "hooks/useAdminCheck";
 import { useDrawItemsStore } from "hooks/useDrawItemsStore";
-import { useDrawsStore } from "hooks/useDrawsStore";
 import { useRouter } from "next/router";
-import React from "react";
 import { DrawItem } from "types/DrawItem";
 import { DeleteConfirmModal } from "./DeleteConfirmModal";
 
@@ -80,11 +79,38 @@ export const DrawItemList = React.memo(() => {
               }
             >
               <ListItemAvatar>
-                <Avatar src={drawItem.image_url}>
+                <Avatar
+                  sx={(theme) => ({
+                    width: theme.spacing(8),
+                    height: theme.spacing(8),
+                    transition: "0.2s ease-in-out",
+                    [theme.breakpoints.down("sm")]: {
+                      width: theme.spacing(6),
+                      height: theme.spacing(6),
+                    },
+                  })}
+                  src={drawItem.image_url}
+                >
                   <ItemIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary={drawItem.name} />
+              <ListItemText
+                sx={(theme) => ({
+                  ml: 2,
+                  [theme.breakpoints.down("sm")]: {
+                    ml: 0,
+                  },
+                })}
+                primaryTypographyProps={{
+                  sx: (theme) => ({
+                    fontSize: 18,
+                    [theme.breakpoints.down("sm")]: {
+                      fontSize: 16,
+                    },
+                  }),
+                }}
+                primary={drawItem.name}
+              />
             </ListItem>
           ))}
         </List>

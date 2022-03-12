@@ -11,13 +11,11 @@ export const useInitializePushNotification = () => {
         scope: "./",
       });
 
-      let subscription = await registration.pushManager.getSubscription();
-
-      if (subscription) {
-        return subscription;
+      if (!registration.pushManager) {
+        return null;
       }
 
-      subscription = await registration.pushManager.subscribe({
+      const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: process.env.WEBPUSH_PUBLIC_KEY,
       });
