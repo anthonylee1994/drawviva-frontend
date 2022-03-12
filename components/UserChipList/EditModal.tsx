@@ -1,8 +1,13 @@
 import {
+  Avatar,
   Box,
   Drawer,
   FormControl,
   InputLabel,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
   MenuItem,
   Select,
   Typography,
@@ -65,6 +70,18 @@ export const EditModal = React.memo<Props>(({ userDraw, visible, onClose }) => {
           <FormTitle>
             <FormattedMessage id="draw.users.role.edit" />
           </FormTitle>
+
+          <List sx={{ mt: -3, width: "100%", mb: 1 }}>
+            <ListItem sx={{ px: 1 }}>
+              <ListItemAvatar>
+                <Avatar src={userDraw?.user.photo_url} />
+              </ListItemAvatar>
+              <ListItemText
+                primary={userDraw?.user.display_name}
+                secondary={userDraw?.user.email}
+              />
+            </ListItem>
+          </List>
 
           <FormControl fullWidth>
             <InputLabel>
