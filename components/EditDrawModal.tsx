@@ -38,14 +38,14 @@ export const EditDrawModal = React.memo<Props>(({ visible, onClose, draw }) => {
   );
 
   React.useEffect(() => {
-    if (draw) {
-      setName(draw.name);
-      setImageUrl(draw.image_url);
+    if (visible) {
+      setName(draw?.name || "");
+      setImageUrl(draw?.image_url || "");
     } else {
       setName("");
       setImageUrl("");
     }
-  }, [draw]);
+  }, [draw?.image_url, draw?.name, visible]);
 
   return (
     <BottomDrawer open={visible} onClose={onClose}>

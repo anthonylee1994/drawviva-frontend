@@ -46,21 +46,14 @@ export const EditDrawItemModal = React.memo<Props>(
     };
 
     React.useEffect(() => {
-      if (drawItem) {
-        setName(drawItem.name);
-        setImageUrl(drawItem.image_url);
+      if (visible) {
+        setName(drawItem?.name || "");
+        setImageUrl(drawItem?.image_url || "");
       } else {
         setName("");
         setImageUrl("");
       }
-    }, [drawItem]);
-
-    React.useEffect(() => {
-      if (!visible) {
-        setName("");
-        setImageUrl("");
-      }
-    }, [visible]);
+    }, [drawItem, visible]);
 
     return (
       <BottomDrawer open={visible} onClose={onClose}>
