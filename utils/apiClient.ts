@@ -2,8 +2,6 @@ import axios from "axios";
 
 axios.defaults.baseURL = process.env.API_BASE_URL;
 
-console.log("process.env.API_BASE_URL", process.env.API_BASE_URL);
-
 axios.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token && config.headers) {

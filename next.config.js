@@ -1,3 +1,5 @@
+require("dotenv");
+
 const withPWA = require("next-pwa");
 
 /** @type {import('next').NextConfig} */
@@ -11,9 +13,8 @@ const nextConfig = {
     dest: "public",
   },
   env: {
-    API_BASE_URL: "https://api.drawviva.com",
-    WEBPUSH_PUBLIC_KEY:
-      "BJIqpF5XQm25HZ4BCx7isd7IpbBX_MdD4vEuw8q9rNrPrhEJswz9s9Mf7BuC89Pn1c1NXMbjm2qvQXYeQNU710k",
+    API_BASE_URL: process.env.API_BASE_URL,
+    WEBPUSH_PUBLIC_KEY: process.env.WEBPUSH_PUBLIC_KEY,
   },
 };
 

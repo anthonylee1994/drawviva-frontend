@@ -4,7 +4,7 @@ import { Title } from "./Title";
 import { AddButton } from "../AddButton";
 import { EditDrawModal } from "../../EditDrawModal";
 import { Box } from "@mui/material";
-import { RefreshButton } from "./BackButton";
+import { RefreshButton } from "./RefreshButton";
 
 export const IndexPageContent = React.memo(() => {
   const [editModalVisible, setEditModalVisible] = React.useState(false);
