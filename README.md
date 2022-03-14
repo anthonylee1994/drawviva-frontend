@@ -13,3 +13,6 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 Or, you may open https://www.drawviva.com in browser.
+
+
+**WTFPL Licensed.**
