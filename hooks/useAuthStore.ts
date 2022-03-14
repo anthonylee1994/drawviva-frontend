@@ -28,14 +28,18 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   currentUser: null,
 
   async login() {
-    set({ isLoading: true });
-    const { updatePushNotificationSubscription } = get();
-    const result = await signInWithPopup(auth, provider);
-    const token = await result.user.getIdToken();
-    const user = await authAPI.login(token);
-    set({ currentUser: user });
-    await updatePushNotificationSubscription();
-    set({ isLoading: false });
+    try {
+      set({ isLoading: true });
+      const { updatePushNotificationSubscription } = get();
+      const result = await signInWithPopup(auth, provider);
+      const token = await result.user.getIdToken();
+      const user = await authAPI.login(token);
+      set({ currentUser: user });
+      await updatePushNotificationSubscription();
+      set({ isLoading: false });
+    } catch (e) {
+      set({ isLoading: false });
+    }
   },
 
   async verifyAuth() {

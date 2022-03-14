@@ -10,7 +10,9 @@ const lang = {
   "draw.role.admin": "管理者",
   "draw.role.participant": "查閱者",
   "draw.delete": "刪除此秒抽",
+  "draw.leave": "離開此秒抽",
   "draw.delete.confirm.message": "您是否確認刪除此秒抽？一旦刪除，將無法復原。",
+  "draw.leave.confirm.message": "您是否確認離開此秒抽？",
   "draw.users": "秒抽參與者",
   "draw.users.add": "新增參與者",
   "draw.users.search": "尋找參與者",
@@ -40,7 +42,9 @@ const lang = {
   "action.cancel": "取消",
   "action.close": "關閉",
   "action.delete": "立即刪除",
+  "action.leave": "立即離開",
   "action.delete.confirm.title": "刪除確認",
+  "action.leave.confirm.title": "離開確認",
 };
 
 export default lang;

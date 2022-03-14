@@ -1,7 +1,6 @@
 import {
   Avatar,
   Box,
-  Drawer,
   FormControl,
   InputLabel,
   List,
@@ -16,7 +15,6 @@ import { BottomDrawer } from "components/BottomDrawer";
 import { FormSubmitButton } from "components/FormSubmitButton";
 import { FormTitle } from "components/FormTitle";
 import { useAdminCheck } from "hooks/useAdminCheck";
-import { useDrawsStore } from "hooks/useDrawsStore";
 import { useChangeRoleForbiddenCheck } from "hooks/userDraws/useChangeRoleForbiddenCheck";
 import { useUserDrawsStore } from "hooks/useUserDrawsStore";
 import { useRouter } from "next/router";

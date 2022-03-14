@@ -3,6 +3,8 @@ import { UserAvatar } from "components/UserAvatar";
 import { Title } from "./Title";
 import { AddButton } from "../AddButton";
 import { EditDrawModal } from "../../EditDrawModal";
+import { Box } from "@mui/material";
+import { RefreshButton } from "./BackButton";
 
 export const IndexPageContent = React.memo(() => {
   const [editModalVisible, setEditModalVisible] = React.useState(false);
@@ -14,7 +16,10 @@ export const IndexPageContent = React.memo(() => {
 
   return (
     <React.Fragment>
-      <UserAvatar />
+      <Box display="flex" alignItems="center">
+        <RefreshButton />
+        <UserAvatar />
+      </Box>
       <Title />
       <AddButton onClick={openEditModal} />
       <EditDrawModal visible={editModalVisible} onClose={closeEditModal} />
