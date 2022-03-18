@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) demo project.
+This is a Drawviva (Web Push) demo project.
 
 ## Getting Started
 
